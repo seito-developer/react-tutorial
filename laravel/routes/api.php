@@ -25,3 +25,14 @@ Route::get('/hoge', function (Request $request) {
         ]
     );
 });
+
+Route::apiResource('/boards', BoardController::class);
+Route::apiResource('/cards', CardController::class);
+
+Route::post('/tasklists', [TaskListController::class, 'store']);
+Route::put('/tasklists/{tasklist}', [TaskListController::class, 'update']);
+Route::delete('/tasklists/{tasklist}', [TaskListController::class, 'destroy']);
+
+Route::post('/cards', [CardController::class, 'store']);
+Route::put('/cards/{card}', [CardController::class, 'update']);
+Route::delete('/cards/{card}', [CardController::class, 'destroy']);
