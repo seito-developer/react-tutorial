@@ -6,10 +6,14 @@
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^4.0.0",
-        "axios": "^1.1.2",
+        "axios": "^1.4.0",
         "laravel-vite-plugin": "^0.7.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "react-dnd": "^16.0.1",
+        "react-dnd-html5-backend": "^16.0.1"
     }
 }

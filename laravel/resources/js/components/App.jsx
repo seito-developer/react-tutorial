@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BoardList from './BoardList';
+import {fetchTest} from '../api';
 
 const App = () => {
-    const [hoge, setHoge] = React.useState("");
+    const [hoge, setHoge] = useState("");
 
     useEffect(()=>{
-        const fetchFromLaravel = async () => {
-            const res  = await axios.get(`/api/hoge`);
-            setHoge(res.data.hoge)
-        };
-        fetchFromLaravel();
+        const res = fetchTest();
+        setHoge(res);
     }, [])
 
     return (
         <div className="App">
-            <h1 style={{color:"gold"}}>Hi, React App</h1>
-            { hoge }
+            <BoardList />
         </div>
     );
 }
