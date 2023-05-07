@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import BoardList from './BoardList';
-import {fetchTest} from '../api';
-import AddBoard from './AddBoard';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Boards from '../pages/boards';
+import Home from '../pages/home';
+
 
 const App = () => {
-    const [hoge, setHoge] = useState("");
-
-    useEffect(()=>{
-        const res = fetchTest();
-        setHoge(res);
-    }, [])
-
-    const callback = () => {
-        console.log('hi');
-    }
-
     return (
-        <div className="App">
-            <h1>ToDo App</h1>
-            <div>
-                <BoardList />
-                <AddBoard　onBoardAdded={callback} />
-                
-                {/* <AddListButton /> */}
-            </div>
-        </div>
-    );
+        <BrowserRouter>
+          <Routes>
+            <Route path={`/`} element={<Home />} />
+            <Route path={`/boards`} element={<Boards />} />
+          </Routes>
+        </BrowserRouter>
+      );
 }
 
 export default App;
