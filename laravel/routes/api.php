@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\TaskListController;
+use App\Http\Controllers\API\CardController;
+use App\Http\Controllers\API\BoardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +31,10 @@ Route::get('/hoge', function (Request $request) {
 
 Route::apiResource('/boards', BoardController::class);
 Route::apiResource('/cards', CardController::class);
+// Route::apiResource('/tasklists', TaskListController::class);
+Route::get('tasklists', [TaskListController::class, 'index']);
 
-Route::post('/tasklists', [TaskListController::class, 'store']);
+// Route::post('/tasklists', [TaskListController::class, 'store']);
 Route::put('/tasklists/{tasklist}', [TaskListController::class, 'update']);
 Route::delete('/tasklists/{tasklist}', [TaskListController::class, 'destroy']);
 

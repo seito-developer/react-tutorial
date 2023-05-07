@@ -4,13 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Board;
 
 class BoardController extends Controller
-    {
-        /**
-         * Display a listing of the resource.
-         */
-        public function index()
+{
+    public function index()
     {
         return Board::where('user_id', Auth::id())->get();
     }

@@ -4,9 +4,15 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Card;
 
 class CardController extends Controller
 {
+    public function index()
+    {
+        return Card::all(); // すべてのカードを取得して返す
+    }
+    
     public function store(Request $request)
     {
         $card = new Card();
