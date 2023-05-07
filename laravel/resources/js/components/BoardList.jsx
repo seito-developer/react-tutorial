@@ -2,25 +2,12 @@ import React, { useState, useEffect, Component } from 'react';
 import { getBoards } from '../api';
 import { Link } from 'react-router-dom';
 
-const BoardList = () => {
-  const [boards, setBoards] = useState([]); // ここで初期化
-  const [error, setError] = useState(""); // ここで初期化
-  const componentDidMount = async () => {
-    try {
-      const boards = await getBoards();
-      setBoards(boards);
-    } catch(err) {
-      setError(err);
-    }
-  }
-
-  useEffect(() => {
-    componentDidMount();
-  }, [])
+const BoardList = (props) => {
 
   const renderBoards = () => {
-    if(boards){
-      return boards.map(board => {
+    console.log('boards:', props.boards);
+    if(props.boards){
+      return props.boards.map(board => {
         return (
           <Link to={"/boards"} 
             state={{ boardId: board.id }}
@@ -33,7 +20,7 @@ const BoardList = () => {
         )
       })
     } else {
-      return <div>{error}</div>
+      return <div>{props.error}</div>
     }
   }
   

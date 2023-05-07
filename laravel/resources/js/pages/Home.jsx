@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import BoardList from '../components/BoardList';
-import {fetchTest} from '../api';
+import {getBoards} from '../api';
 import AddBoard from '../components/AddBoard';
 
 const Home = () => {
-    const [hoge, setHoge] = useState("");
+    const [boards, setBoards] = useState([]);
+    const [error, setError] = useState("");
 
-    useEffect(()=>{
-        const res = fetchTest();
-        setHoge(res);
-    }, [])
-
-    const callback = () => {
-        console.log('hi');
+    const componentDidMount = async () => {
+        try {
+            const response = await getBoards();
+            console.log('response:', response);
+            setBoards(response);
+        } catch(err) {
+            setError(err);
+        }
     }
+
+    useEffect(() => {
+        componentDidMount();
+    }, []);
 
     return (
         <div>
             <h1>ToDo App</h1>
             <div>
-                <BoardList />
-                <AddBoard　onBoardAdded={callback} />
+                <BoardList boards={boards} error={error} />
+                <AddBoard onBoardAdded={componentDidMount} />
                 
                 {/* <AddListButton /> */}
             </div>
