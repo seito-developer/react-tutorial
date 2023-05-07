@@ -32,7 +32,8 @@ Route::get('/hoge', function (Request $request) {
 Route::apiResource('/boards', BoardController::class);
 Route::apiResource('/cards', CardController::class);
 // Route::apiResource('/tasklists', TaskListController::class);
-Route::get('tasklists', [TaskListController::class, 'index']);
+
+Route::get('/boards/{boardId}/tasklists', [TaskListController::class, 'index']);
 
 // Route::post('/tasklists', [TaskListController::class, 'store']);
 Route::put('/tasklists/{tasklist}', [TaskListController::class, 'update']);

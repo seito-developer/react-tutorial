@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Boards from '../pages/boards';
+import Board from '../pages/Board';
 import Home from '../pages/home';
 
 
@@ -9,7 +9,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path={`/`} element={<Home />} />
-            <Route path={`/boards`} element={<Boards />} />
+            <Route path={`/board`} element={<Board />} />
           </Routes>
         </BrowserRouter>
       );

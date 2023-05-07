@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('task_lists', function (Blueprint $table) {
+        Schema::create('tasklists', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('board_id');
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('task_lists');
+        Schema::dropIfExists('tasklists');
     }
 };

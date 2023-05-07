@@ -21,23 +21,23 @@ export const createBoard = async (title) => {
 
 
 // List
-export const getLists = async (listId) => {
-  const response = await api.get(`/lists/${listId}/lists`);
+export const getTasklists = async (boardId) => {
+  const response = await api.get(`/boards/${boardId}/tasklists`);
   return response.data;
 };
 
-export const createList = async (listId, title) => {
-  const response = await api.post(`/lists/${listId}/lists`, { title });
+export const createTasklist = async (listId, title) => {
+  const response = await api.post(`/tasklists/${tasklistId}`, { title });
   return response.data;
 };
 
-export const updateList = async (listId, updates) => {
-  const response = await api.put(`/lists/${listId}`, updates);
+export const updateTasklist = async (tasklistId, updates) => {
+  const response = await api.put(`/tasklists/${tasklistId}`, updates);
   return response.data;
 };
 
-export const deleteList = async (listId) => {
-  const response = await api.delete(`/lists/${listId}`);
+export const deleteTasklist = async (tasklistId) => {
+  const response = await api.delete(`/tasklists/${tasklistId}`);
   return response.data;
 };
 

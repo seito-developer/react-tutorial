@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Board;
 use Illuminate\Http\Request;
 use App\Models\TaskList;
 
 class TaskListController extends Controller
 {
-    public function index()
+    public function index($boardId)
     {
-        return TaskList::all(); // すべてのタスクリストを取得して返す
+        $board = Board::findOrFail($boardId);
+
+        // Retrieve the related task lists
+        $tasklists = $board->tasklists;
+
+        return $tasklists;
     }
 
     public function store(Request $request)
