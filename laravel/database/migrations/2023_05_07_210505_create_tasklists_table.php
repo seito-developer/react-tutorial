@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('tasklists', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('board_id');
+            $table->string('title');
             $table->timestamps();
+
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
         });
     }
 

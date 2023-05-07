@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getTasklists } from '../api';
+import AddTasklist from '../components/AddTasklist';
 
 const Boards = () => {
     const { state } = useLocation();
@@ -29,14 +30,26 @@ const Boards = () => {
     }, [boardId]);
 
     const render = () => {
-        if(error) return <div>{`${error}: エラーです`}</div>
-        else return <div>{tasklists}</div>
+        if(tasklists){
+            return (
+                <ul>
+                    {tasklists.map(tasklist => (
+                        <li key={tasklist.id}>
+                            <h2>{tasklist.title}</h2>
+                        </li>
+                    ))}
+                </ul>
+            )
+        } else {
+            return <div>{`${error}: エラーです`}</div>
+        }
     }
     
     return (
         <div>
             <h1>Boards</h1>
             {render()}
+            <AddTasklist boardId={state.boardId} />
         </div>
     );
 }

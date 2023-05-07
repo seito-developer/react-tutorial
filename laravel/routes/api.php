@@ -35,7 +35,7 @@ Route::apiResource('/cards', CardController::class);
 
 Route::get('/boards/{boardId}/tasklists', [TaskListController::class, 'index']);
 
-// Route::post('/tasklists', [TaskListController::class, 'store']);
+Route::post('/tasklists', [TaskListController::class, 'store']);
 Route::put('/tasklists/{tasklist}', [TaskListController::class, 'update']);
 Route::delete('/tasklists/{tasklist}', [TaskListController::class, 'destroy']);
 

@@ -23,7 +23,8 @@ class TaskListController extends Controller
     {
         $tasklist = new TaskList();
         $tasklist->title = $request->title;
-        $tasklist->board_id = $request->board_id;
+        $tasklist->board_id = $request->input('board_id'); // 変更
+        // $tasklist->board_id = $request->board_id;
         $tasklist->save();
 
         return response()->json($tasklist);

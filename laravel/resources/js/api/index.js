@@ -26,8 +26,12 @@ export const getTasklists = async (boardId) => {
   return response.data;
 };
 
-export const createTasklist = async (listId, title) => {
-  const response = await api.post(`/tasklists/${tasklistId}`, { title });
+export const createTasklist = async (tasklistId, title) => {
+  const response = await api.post(`/tasklists/`, 
+  {
+    board_id: tasklistId,
+    title 
+  });
   return response.data;
 };
 

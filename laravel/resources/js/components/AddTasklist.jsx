@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { createList } from '../api';
+import { createTasklist } from '../api';
 
-const AddList = ({ boardId, onListAdded }) => {
+const AddTasklist = ({ boardId, onListAdded }) => {
   const [title, setTitle] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title.trim()) {
-      const newList = await createList(boardId, title);
+      const newList = await createTasklist(boardId, title);
       onListAdded(newList);
       setTitle('');
     }
+    console.log('title:', `${title}+${boardId}`);
   };
 
   return (
@@ -26,4 +27,4 @@ const AddList = ({ boardId, onListAdded }) => {
   );
 };
 
-export default AddList;
+export default AddTasklist;
