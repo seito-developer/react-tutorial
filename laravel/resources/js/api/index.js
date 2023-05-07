@@ -19,23 +19,36 @@ export const createBoard = async (title) => {
   return response.data;
 };
 
-export const getLists = async (boardId) => {
-  const response = await api.get(`/boards/${boardId}/lists`);
+
+// List
+export const getLists = async (listId) => {
+  const response = await api.get(`/lists/${listId}/lists`);
   return response.data;
 };
 
-export const createList = async (boardId, title) => {
-  const response = await api.post(`/boards/${boardId}/lists`, { title });
+export const createList = async (listId, title) => {
+  const response = await api.post(`/lists/${listId}/lists`, { title });
   return response.data;
 };
 
-export const getCards = async (listId) => {
-  const response = await api.get(`/lists/${listId}/cards`);
+export const updateList = async (listId, updates) => {
+  const response = await api.put(`/lists/${listId}`, updates);
   return response.data;
 };
 
-export const createCard = async (listId, title) => {
-  const response = await api.post(`/lists/${listId}/cards`, { title });
+export const deleteList = async (listId) => {
+  const response = await api.delete(`/lists/${listId}`);
+  return response.data;
+};
+
+// Cards
+export const getCards = async (cardId) => {
+  const response = await api.get(`/cards/${cardId}/cards`);
+  return response.data;
+};
+
+export const createCard = async (cardId, title) => {
+  const response = await api.post(`/cards/${cardId}/cards`, { title });
   return response.data;
 };
 

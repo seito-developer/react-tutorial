@@ -3,20 +3,35 @@ import { getBoards } from '../api';
 
 const BoardList = () => {
   const [boards, setBoards] = useState([]); // ここで初期化
-  
-  useEffect(() => {
-    const componentDidMount = async () => {
+  const [error, setError] = useState(""); // ここで初期化
+  const componentDidMount = async () => {
+    try {
       const boards = await getBoards();
-      return boards;
+      setBoards(boards);
+    } catch(err) {
+      setError(err);
     }
-    setBoards(componentDidMount())
+  }
+
+  useEffect(() => {
+    componentDidMount();
   }, [])
+
+  const renderBoards = () => {
+    if(boards){
+      return boards.map(board => {
+        return (
+          <div key={board.id}>{board.title}</div>
+        )
+      })
+    } else {
+      return <div>{error}</div>
+    }
+  }
   
   return (
     <div>
-      {boards?.map(board => (
-        <div key={board.id}>{board.title}</div>
-      ))}
+      {renderBoards()}
     </div>
   );
 }

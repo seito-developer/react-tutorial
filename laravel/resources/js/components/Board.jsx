@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
 import AddListButton from './AddListButton';
-import { fetchLists } from '../api';
+import { getBoards } from '../api/index';
 
 class Board extends Component {
   state = {
@@ -9,7 +9,7 @@ class Board extends Component {
   };
 
   async componentDidMount() {
-    const lists = await fetchLists();
+    const lists = await getBoards();
     this.setState({ lists });
   }
 

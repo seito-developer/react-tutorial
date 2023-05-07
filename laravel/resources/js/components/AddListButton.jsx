@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { addList } from '../api';
+import { createList } from '../api/index';
 
 class AddListButton extends Component {
   handleAddList = async () => {
     const title = prompt('Enter list title');
     if (title) {
-      const newList = await addList(title);
+      const newList = await createList(title);
       // リストを追加した後の処理をここに記述（例：追加したリストを表示）
     }
   };
