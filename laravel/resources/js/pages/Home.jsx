@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BoardList from '../components/BoardList';
+import Board from '../components/Board';
 import {getBoards} from '../api';
 import AddBoard from '../components/AddBoard';
 
@@ -25,7 +25,7 @@ const Home = () => {
         <div>
             <h1>ToDo App</h1>
             <div>
-                <BoardList boards={boards} error={error} />
+                <Board boards={boards} error={error} />
                 <AddBoard onBoardAdded={componentDidMount} />
                 
                 {/* <AddListButton /> */}
