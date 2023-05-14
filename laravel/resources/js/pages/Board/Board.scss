@@ -1,0 +1,29 @@
+.page-board {}
+.page-board__title {}
+.page-board__contents {
+    padding-top: 50px;
+    height: 100%;
+    width: 100%;
+}
+.page-board__contents-parent {
+    position: relative;
+    flex-grow: 1;
+}
+.page-board__contents-inner {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: auto;
+}
+.page-board__item {
+    margin: 0 5px;
+}
+.page-board__add {
+    background-color: rgba(#000, .5);
+    padding: 10px;
+    border-radius: 5px;
+}

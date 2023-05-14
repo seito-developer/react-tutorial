@@ -15,7 +15,7 @@ const Tasklist = (props) => {
 
                         </div>
                         <div className="tasklist__btn">
-                            <AddTasklist boardId={props.boardId}  />
+                            
                         </div>
                     </article>
                 );

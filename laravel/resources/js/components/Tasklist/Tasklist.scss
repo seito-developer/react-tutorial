@@ -7,11 +7,12 @@
     border-radius: 5px;
     padding: 10px;
     margin: 0 10px;
+    min-width: 300px;
 }
 .tasklist__heading {
     font-weight: bold;
 }
 .tasklist__cards {
-
+    margin: 10px 0;
 }
-.tasklist__btn {}
+// .tasklist__btn {}
