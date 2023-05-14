@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getTasklists } from '../api';
 import AddTasklist from '../components/AddTasklist';
+import Tasklist from '../components/Tasklist/Tasklist';
 
 const Boards = () => {
     const { state } = useLocation();
@@ -9,7 +10,7 @@ const Boards = () => {
     const [error, setError] = useState("");
     const [tasklists, setTasklists] = useState([]);
 
-    const fetchLists = async () => {
+    const fetchTasklsts = async () => {
         try {
             const res = await getTasklists(boardId);
             setTasklists(res);
@@ -24,32 +25,15 @@ const Boards = () => {
 
     useEffect(() => {
         if (boardId) {
-            fetchLists();
+            fetchTasklsts();
             console.log('tasklists:', tasklists)
         }
     }, [boardId]);
 
-    const render = () => {
-        if(tasklists){
-            return (
-                <ul>
-                    {tasklists.map(tasklist => (
-                        <li key={tasklist.id}>
-                            <h2>{tasklist.title}</h2>
-                        </li>
-                    ))}
-                </ul>
-            )
-        } else {
-            return <div>{`${error}: エラーです`}</div>
-        }
-    }
-    
     return (
         <div>
             <h1>Boards</h1>
-            {render()}
-            <AddTasklist boardId={state.boardId} />
+            <Tasklist tasklists={tasklists} error={error} boardId={state.boardId} />
         </div>
     );
 }

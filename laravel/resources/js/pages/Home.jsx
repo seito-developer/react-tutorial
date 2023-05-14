@@ -27,8 +27,6 @@ const Home = () => {
             <div>
                 <Board boards={boards} error={error} />
                 <AddBoard onBoardAdded={componentDidMount} />
-                
-                {/* <AddListButton /> */}
             </div>
         </div>
     );
