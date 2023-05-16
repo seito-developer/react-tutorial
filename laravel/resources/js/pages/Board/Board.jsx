@@ -7,13 +7,12 @@ import "./Board.scss";
 
 const Boards = () => {
     const { state } = useLocation();
-    const [boardId, setBoardId] = useState([]);
     const [error, setError] = useState("");
     const [tasklists, setTasklists] = useState([]);
 
     const fetchTasklsts = async () => {
         try {
-            const res = await getTasklists(boardId);
+            const res = await getTasklists(state.boardId);
             setTasklists(res);
         } catch (err) {
             setError(err);
@@ -21,15 +20,10 @@ const Boards = () => {
     }
 
     useEffect(() => {
-        setBoardId(state.boardId);
-    }, [state.boardId]);
-
-    useEffect(() => {
-        if (boardId) {
+        if (state.boardId) {
             fetchTasklsts();
-            console.log('tasklists:', tasklists)
         }
-    }, [boardId]);
+    }, []);
 
     const handleAddTasklist = (newTasklist) => {
         setTasklists([...tasklists, newTasklist])

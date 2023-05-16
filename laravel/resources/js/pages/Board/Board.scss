@@ -2,12 +2,13 @@
 .page-board__title {}
 .page-board__contents {
     padding-top: 50px;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 }
 .page-board__contents-parent {
     position: relative;
     flex-grow: 1;
+    height: 100%;
 }
 .page-board__contents-inner {
     display: flex;
