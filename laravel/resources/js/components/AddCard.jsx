@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { createCard } from "../api";
 
-const AddCard = ({ listId, onAddCard }) => {
+const AddCard = ({ tasklistId, onAddCard }) => {
     const [title, setTitle] = useState("");
 
     const handleAddCard = async (e) => {
         e.preventDefault();
         if (title) {
-            const newCard = await createCard(title, listId);
+            const newCard = await createCard(title, tasklistId);
             onAddCard(newCard);
             setTitle("");
         }

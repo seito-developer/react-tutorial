@@ -53,8 +53,8 @@ export const getCards = async () => {
 
 export const createCard = async (title, tasklistId) => {
   const response = await api.post(`/cards`, { 
-    title: title,
     list_id: tasklistId,
+    title: title,
    });
   return response.data;
 };

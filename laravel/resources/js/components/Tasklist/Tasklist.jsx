@@ -39,7 +39,7 @@ const Tasklist = (props) => {
                             <Card cards={cards} />
                         </div>
                         <div className="tasklist__btn">
-                            <AddCard listId={item.id} onAddCard={handleCardAdded} />
+                            <AddCard tasklistId={item.id} onAddCard={handleCardAdded} />
                         </div>
                     </article>
                 );
