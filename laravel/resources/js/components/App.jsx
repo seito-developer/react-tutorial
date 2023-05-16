@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Board from '../pages/Board/Board';
-import Home from '../pages/home';
+import Home from '../pages/Home/Home';
 
 
 const App = () => {

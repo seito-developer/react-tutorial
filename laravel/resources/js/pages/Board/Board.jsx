@@ -4,6 +4,7 @@ import { getTasklists } from '../../api';
 import AddTasklist from '../../components/AddTasklist';
 import Tasklist from '../../components/Tasklist/Tasklist';
 import "./Board.scss";
+import Layout from '../../components/Layout/Layout';
 
 const Boards = () => {
     const { state } = useLocation();
@@ -42,8 +43,7 @@ const Boards = () => {
     }
 
     return (
-        <div className="page-board">
-            <h1 className="page-board__title">Boards</h1>
+        <Layout title={"Boards"}>
             <div className="page-board__contents">
                 <div className="page-board__contents-parent">
                     <div style={autoWidth()} className="page-board__contents-inner">
@@ -58,7 +58,7 @@ const Boards = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 }
 
