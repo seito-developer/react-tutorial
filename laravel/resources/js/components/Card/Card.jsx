@@ -4,7 +4,7 @@ import { deleteCard } from "../../api";
 
 const Card = (props) => {
     const [cards, setCards] = useState([]);
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
     const [value, setValue] = useState();
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const Card = (props) => {
         <div className="card">
             {cards.map((item) => {
                 return (
-                    <div key={item.id} className="card-item">
+                    <div key={item.id} className="card-item" onClick={() => setActive(!active)}>
                         <p>{item.title}</p>
                         {active ? (
                             <div className="card__form">
