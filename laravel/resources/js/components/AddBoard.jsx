@@ -6,10 +6,10 @@ const AddBoard = ({ onBoardAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (title.trim()) {
+    if (title) {
       const newBoard = await createBoard(title);
       onBoardAdded(newBoard);
-      setTitle('');
+      setTitle("");
     }
   };
 

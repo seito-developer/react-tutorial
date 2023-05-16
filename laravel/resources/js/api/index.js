@@ -46,13 +46,16 @@ export const deleteTasklist = async (tasklistId) => {
 };
 
 // Cards
-export const getCards = async (cardId) => {
-  const response = await api.get(`/cards/${cardId}/cards`);
+export const getCards = async () => {
+  const response = await api.get(`/cards`);
   return response.data;
 };
 
-export const createCard = async (cardId, title) => {
-  const response = await api.post(`/cards/${cardId}/cards`, { title });
+export const createCard = async (title, tasklistId) => {
+  const response = await api.post(`/cards`, { 
+    title: title,
+    list_id: tasklistId,
+   });
   return response.data;
 };
 
