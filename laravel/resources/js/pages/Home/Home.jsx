@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Board from "../../components/Board";
+import Board from "../../components/Board/Board";
 import { getBoards } from "../../api";
 import AddBoard from "../../components/AddBoard";
 import Layout from "../../components/Layout/Layout";
