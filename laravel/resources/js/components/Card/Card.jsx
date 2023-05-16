@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Card.scss";
 
 const Card = (props) => {
     const [cards, setCards] = useState([]);
@@ -11,10 +12,10 @@ const Card = (props) => {
     }, [props.cardData]);
 
     return (
-        <div>
+        <div className="card">
             {cards.map((item) => {
                 return (
-                    <div key={item.id} className="card">
+                    <div key={item.id} className="card-item">
                         <p>{item.title}</p>
                     </div>
                 );
