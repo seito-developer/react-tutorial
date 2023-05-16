@@ -1,0 +1,31 @@
+.add-card {
+    // margin: 0 10px;
+    // display: block;
+    // // padding: 25px;
+    // // box-shadow: 4px 4px 0 rgba(#000, .3);
+    // background-color: #ddd;
+    // border-radius: 5px;
+    // border: 1px solid #bbb;
+    // min-width: 300px;
+    position: relative;
+}
+.add-card > input {
+    width: 100%;
+    border-radius: 5px;
+    padding-right: 50px;
+    border: 0;
+}
+.add-card > button {
+    position: absolute;
+    right: 0px;
+    border-radius: 0 5px 5px 0;
+    background-color: #666;
+    color: #fff;
+    display: inline-block;
+    padding: 8px 14px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #333;
+    }
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 
 import { Link } from "react-router-dom";
 import "./Tasklist.scss";
-import AddCard from "../AddCard";
+import AddCard from "../AddCard/AddCard";
 import Card from "../Card";
 import { getCards } from "../../api";
 

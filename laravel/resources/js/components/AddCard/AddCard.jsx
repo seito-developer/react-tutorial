@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { createCard } from "../api";
+import { createCard } from "../../api";
+import "./AddCard.scss";
 
 const AddCard = ({ tasklistId, onAddCard }) => {
     const [title, setTitle] = useState("");
@@ -14,14 +15,14 @@ const AddCard = ({ tasklistId, onAddCard }) => {
     };
 
     return (
-        <form onSubmit={handleAddCard}>
+        <form className="add-card" onSubmit={handleAddCard}>
             <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Add a new card"
             />
-            <button type="submit">Add Card</button>
+            <button type="submit">+</button>
         </form>
     );
 };
