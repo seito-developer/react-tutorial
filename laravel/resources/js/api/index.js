@@ -27,7 +27,7 @@ export const getTasklists = async (boardId) => {
 };
 
 export const createTasklist = async (tasklistId, title) => {
-  const response = await api.post(`/tasklists/`, 
+  const response = await api.post(`/tasklists`, 
   {
     board_id: tasklistId,
     title 
