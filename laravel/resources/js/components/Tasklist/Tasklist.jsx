@@ -5,11 +5,27 @@ import AddTasklist from "../AddTasklist";
 import "./Tasklist.scss";
 import AddCard from "../AddCard";
 import Card from "../Card";
+import { getCards } from "../../api";
 
 const Tasklist = (props) => {
+    const [allCards, setAllCards] = useState([]);
+    const [cardError, setCardError] = useState();
+
+    const fetchCards = async () => {
+        try {
+            const allCards = await getCards();
+            setAllCards(allCards);
+        } catch (err) {
+            setCardError(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchCards();
+    }, []);
 
     const handleCardAdded = (newCard) => {
-        setCards([...cards, newCard]);
+        setAllCards([...allCards, newCard]);
     };
 
     const renderTasklists = () => {
@@ -19,10 +35,18 @@ const Tasklist = (props) => {
                     <article className="tasklist__item" key={item.id}>
                         <h2 className="tasklist__heading">{item.title}</h2>
                         <div className="tasklist__cards">
-                            <Card tasklistId={item.id} />
+                            {!cardError ? (
+                                <Card
+                                    cardData={allCards}
+                                    tasklistId={item.id}
+                                />
+                            ) : null}
                         </div>
                         <div className="tasklist__btn">
-                            <AddCard tasklistId={item.id} onAddCard={handleCardAdded} />
+                            <AddCard
+                                tasklistId={item.id}
+                                onAddCard={handleCardAdded}
+                            />
                         </div>
                     </article>
                 );
