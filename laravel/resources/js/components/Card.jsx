@@ -1,7 +1,11 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { getCards } from "../api";
 
 const Card = (props) => {
+
+    const [cards, setCards] = useState([]);
+    const [cardError, setCardError] = useState("");
+
     const fetchCards = async () => {
         try {
             const allCards = await getCards();
@@ -9,20 +13,19 @@ const Card = (props) => {
             const listCards = allCards.filter(
                 (card) => card.list_id === props.tasklistId
             );
-            props.setCards(listCards);
+            setCards(listCards);
         } catch (err) {
-            props.setCardError(err);
+            setCardError(err);
         }
     };
 
     useEffect(() => {
         fetchCards();
-        console.log("card props:", props);
     }, []);
 
     const renderCards = () => {
-        if (props.cards) {
-            return props.cards.map((item) => {
+        if (cards) {
+            return cards.map((item) => {
                 return (
                     <div key={item.id} className="card">
                         <p>{item.title}</p>
@@ -30,7 +33,7 @@ const Card = (props) => {
                 );
             });
         } else {
-            return <div>{props.cardError}</div>;
+            return <div>{cardError}</div>;
         }
     };
 
