@@ -26,6 +26,7 @@ const Tasklist = (props) => {
 
     const handleCardAdded = (newCard) => {
         setAllCards([...allCards, newCard]);
+        fetchCards();
     };
 
     const renderTasklists = () => {
