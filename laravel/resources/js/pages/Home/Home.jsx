@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Board from "../../components/Board/Board";
 import { getBoards } from "../../api";
-import AddBoard from "../../components/AddBoard";
+import AddBoard from "../../components/AddBoard/AddBoard";
 import Layout from "../../components/Layout/Layout";
+import "./Home.scss";
 
 const Home = () => {
     const [boards, setBoards] = useState([]);
@@ -24,8 +25,12 @@ const Home = () => {
 
     return (
         <Layout title={"ToDo App"}>
-            <Board boards={boards} error={error} />
-            <AddBoard onBoardAdded={componentDidMount} />
+            <div className="page-home">
+                <div className="page-home__contents">
+                    <Board boards={boards} error={error} />
+                    <AddBoard onBoardAdded={componentDidMount} />
+                </div>
+            </div>
         </Layout>
     );
 };

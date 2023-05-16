@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 
 import { Link } from "react-router-dom";
-import AddTasklist from "../AddTasklist";
 import "./Tasklist.scss";
 import AddCard from "../AddCard";
 import Card from "../Card";

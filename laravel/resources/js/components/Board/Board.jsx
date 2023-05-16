@@ -10,9 +10,11 @@ const Board = (props) => {
     if(props.boards){
       return props.boards.map(item => {
         return (
-          <Link to={"/board"}
+          <Link 
+            className="board__item"
+            to={"/board"}
             state={{ boardId: item.id }}
-            key={item.id} href="#" className="board">
+            key={item.id}>
               <h2 className="board__title">
                 {item.title}
               </h2>
@@ -26,7 +28,7 @@ const Board = (props) => {
   }
   
   return (
-    <div>
+    <div className="board">
       {renderBoards()}
     </div>
   );
