@@ -9,10 +9,21 @@ const Card = (props) => {
     const onUpdate = (e, cardId) => {
         e.preventDefault();
         props.onUpdate(cardId, value);
+        setFormActive(false);
+    }
+
+    const onDelete = (e) => {
+        e.preventDefault();
+        props.onDelete(props.id);
+        setFormActive(false);
     }
 
     return (
-        <div key={props.id} className="card" onClick={() => setFormActive(!formActive)}>
+        <div key={props.id} className="card">
+            {!formActive ? (
+                <div className="card__cover" onClick={() => setFormActive(!formActive)}></div>
+                ) : null
+            }
             <p>{props.title}</p>
             {formActive ? (
                 <div className="card__form">
@@ -29,7 +40,7 @@ const Card = (props) => {
                     </form>
                     <button
                         type="button"
-                        onClick={() => props.onDelete(props.id)}
+                        onClick={(e) => onDelete(e)}
                     >
                         Delete
                     </button>
