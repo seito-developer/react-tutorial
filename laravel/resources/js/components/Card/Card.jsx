@@ -3,16 +3,8 @@ import "./Card.scss";
 import { deleteCard } from "../../api";
 
 const Card = (props) => {
-    const [cards, setCards] = useState([]);
-    const [active, setActive] = useState(false);
+    const [formActive, setFormActive] = useState(false);
     const [value, setValue] = useState();
-
-    useEffect(() => {
-        const listCards = props.cardData.filter(
-            (card) => card.list_id === props.tasklistId
-        );
-        setCards(listCards);
-    }, [props.cardData]);
     
     const onUpdate = (e, cardId) => {
         e.preventDefault();
@@ -20,36 +12,30 @@ const Card = (props) => {
     }
 
     return (
-        <div className="card">
-            {cards.map((item) => {
-                return (
-                    <div key={item.id} className="card-item" onClick={() => setActive(!active)}>
-                        <p>{item.title}</p>
-                        {active ? (
-                            <div className="card__form">
-                                <form
-                                    className="card__form-inner"
-                                    onSubmit={(e) => onUpdate(e, item.id)}
-                                >
-                                    <input
-                                        type="text"
-                                        defaultValue={item.title}
-                                        onChange={(e) => setValue(e.target.value)}
-                                    />
-                                    <button type="submit">Update</button>
-                                </form>
-                                <button
-                                    type="button"
-                                    onClick={() => props.onDelete(item.id)}
-                                >
-                                    Delete
-                                </button>
-                            </div>
-                        ) : null}
-                        {props.cardError ? <p> {props.cardError} </p> : null}
-                    </div>
-                );
-            })}
+        <div key={props.id} className="card" onClick={() => setFormActive(!formActive)}>
+            <p>{props.title}</p>
+            {formActive ? (
+                <div className="card__form">
+                    <form
+                        className="card__form-inner"
+                        onSubmit={(e) => onUpdate(e, props.id)}
+                    >
+                        <input
+                            type="text"
+                            defaultValue={props.title}
+                            onChange={(e) => setValue(e.target.value)}
+                        />
+                        <button type="submit">Update</button>
+                    </form>
+                    <button
+                        type="button"
+                        onClick={() => props.onDelete(props.id)}
+                    >
+                        Delete
+                    </button>
+                </div>
+            ) : null}
+            {props.cardError ? <p> {props.cardError} </p> : null}
         </div>
     );
 };

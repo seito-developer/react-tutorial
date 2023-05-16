@@ -3,7 +3,7 @@ import React, { useState, useEffect, Component } from "react";
 import { Link } from "react-router-dom";
 import "./Tasklist.scss";
 import AddCard from "../AddCard/AddCard";
-import Card from "../Card/Card";
+import CardList from "../CardList/CardList";
 import { deleteCard, getCards, updateCard } from "../../api";
 
 const Tasklist = (props) => {
@@ -57,7 +57,7 @@ const Tasklist = (props) => {
                         <h2 className="tasklist__heading">{item.title}</h2>
                         <div className="tasklist__cards">
                             {!allCardsError ? (
-                                <Card
+                                <CardList
                                     cardData={allCards}
                                     tasklistId={item.id}
                                     onUpdate={handleUpdateCard}
