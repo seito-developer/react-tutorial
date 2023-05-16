@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from "react";
-import { getBoards, getCards } from "../../api";
+
 import { Link } from "react-router-dom";
 import AddTasklist from "../AddTasklist";
 import "./Tasklist.scss";
@@ -8,26 +8,11 @@ import Card from "../Card";
 
 const Tasklist = (props) => {
     const [cards, setCards] = useState([]);
-
-    const fetchCards = async () => {
-        try {
-            const allCards = await getCards();
-            const listCards = allCards.filter(
-                (card) => card.list_id === listId
-            );
-            setCards(listCards);
-        } catch (err) {
-            setError(err);
-        }
-    };
+    const [cardError, setCardError] = useState("");
 
     const handleCardAdded = (newCard) => {
         setCards([...cards, newCard]);
     };
-
-    useEffect(() => {
-        fetchCards();
-    }, []);
 
     const renderTasklists = () => {
         if (props.tasklists) {
@@ -36,7 +21,13 @@ const Tasklist = (props) => {
                     <article className="tasklist__item" key={item.id}>
                         <h2 className="tasklist__heading">{item.title}</h2>
                         <div className="tasklist__cards">
-                            <Card cards={cards} />
+                            <Card 
+                                tasklistId={item.id} 
+                                cards={cards} 
+                                setCards={setCards}
+                                cardError={cardError}
+                                setCardError={setCardError}
+                             />
                         </div>
                         <div className="tasklist__btn">
                             <AddCard tasklistId={item.id} onAddCard={handleCardAdded} />

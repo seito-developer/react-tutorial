@@ -7,7 +7,7 @@ import "./Board.scss";
 
 const Boards = () => {
     const { state } = useLocation();
-    const [error, setError] = useState("");
+    const [tasklistError, setTasklistError] = useState("");
     const [tasklists, setTasklists] = useState([]);
 
     const fetchTasklsts = async () => {
@@ -15,7 +15,7 @@ const Boards = () => {
             const res = await getTasklists(state.boardId);
             setTasklists(res);
         } catch (err) {
-            setError(err);
+            setTasklistError(err);
         }
     }
 
@@ -48,7 +48,7 @@ const Boards = () => {
                 <div className="page-board__contents-parent">
                     <div style={autoWidth()} className="page-board__contents-inner">
                         <div className="page-board__item">
-                            <Tasklist tasklists={tasklists} error={error} boardId={state.boardId} />
+                            <Tasklist tasklists={tasklists} error={tasklistError} boardId={state.boardId} />
                         </div>
                         <div className="page-board__item">
                             <div className="page-board__add">

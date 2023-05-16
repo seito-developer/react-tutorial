@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Board = (props) => {
 
   const renderBoards = () => {
-    console.log('boards:', props.boards);
+    
     if(props.boards){
       return props.boards.map(item => {
         return (
