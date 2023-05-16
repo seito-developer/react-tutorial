@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { createBoard } from '../api';
+import { createBoard } from '../../api';
+import "./AddBoard.scss";
 
 const AddBoard = ({ onBoardAdded }) => {
   const [title, setTitle] = useState('');
@@ -14,7 +15,7 @@ const AddBoard = ({ onBoardAdded }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="add-board" onSubmit={handleSubmit}>
       <input
         type="text"
         value={title}

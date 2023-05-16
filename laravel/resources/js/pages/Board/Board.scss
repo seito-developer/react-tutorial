@@ -13,6 +13,7 @@
 .page-board__contents-inner {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     position: absolute;
     left: 0;
     top: 0;
@@ -23,8 +24,4 @@
 .page-board__item {
     margin: 0 5px;
 }
-.page-board__add {
-    background-color: rgba(#000, .5);
-    padding: 10px;
-    border-radius: 5px;
-}
+// .page-board__add {}

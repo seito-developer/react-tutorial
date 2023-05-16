@@ -1,6 +1,7 @@
 .tasklist {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 .tasklist__item {
     background-color: #eee;
@@ -13,6 +14,8 @@
 .tasklist__heading {
     font-weight: bold;
     font-size: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
 }
 .tasklist__cards {
     margin: 10px 0;

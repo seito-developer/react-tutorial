@@ -1,10 +1,9 @@
 import React, { useState, useEffect, Component } from "react";
 
 import { Link } from "react-router-dom";
-import AddTasklist from "../AddTasklist";
 import "./Tasklist.scss";
-import AddCard from "../AddCard";
-import Card from "../Card";
+import AddCard from "../AddCard/AddCard";
+import Card from "../Card/Card";
 import { getCards } from "../../api";
 
 const Tasklist = (props) => {

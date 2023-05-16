@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { getTasklists } from '../../api';
-import AddTasklist from '../../components/AddTasklist';
-import Tasklist from '../../components/Tasklist/Tasklist';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { getTasklists } from "../../api";
+import AddTasklist from "../../components/AddTasklist/AddTasklist";
+import Tasklist from "../../components/Tasklist/Tasklist";
 import "./Board.scss";
+import Layout from "../../components/Layout/Layout";
 
 const Boards = () => {
     const { state } = useLocation();
@@ -17,7 +18,7 @@ const Boards = () => {
         } catch (err) {
             setTasklistError(err);
         }
-    }
+    };
 
     useEffect(() => {
         if (state.boardId) {
@@ -26,40 +27,49 @@ const Boards = () => {
     }, []);
 
     const handleAddTasklist = (newTasklist) => {
-        setTasklists([...tasklists, newTasklist])
+        setTasklists([...tasklists, newTasklist]);
     };
 
     const autoWidth = () => {
         const tasklistsLenAll = tasklists.length + 1;
-        const WIDTH = 300;
+        const WIDTH = 310;
         const MARGIN = 15;
-        const value = 
-            (tasklistsLenAll * WIDTH) + 
-            (tasklistsLenAll * MARGIN);
+        const value = tasklistsLenAll * WIDTH + tasklistsLenAll * MARGIN;
         return {
-            "width": value + "px"
-        }
-    }
+            width: value + "px",
+        };
+    };
 
     return (
-        <div className="page-board">
-            <h1 className="page-board__title">Boards</h1>
-            <div className="page-board__contents">
-                <div className="page-board__contents-parent">
-                    <div style={autoWidth()} className="page-board__contents-inner">
-                        <div className="page-board__item">
-                            <Tasklist tasklists={tasklists} error={tasklistError} boardId={state.boardId} />
-                        </div>
-                        <div className="page-board__item">
-                            <div className="page-board__add">
-                                <AddTasklist boardId={state.boardId} onListAdded={handleAddTasklist}  />
+        <Layout title={"Boards"}>
+            <div className="page-board">
+                <div className="page-board__contents">
+                    <div className="page-board__contents-parent">
+                        <div
+                            style={autoWidth()}
+                            className="page-board__contents-inner"
+                        >
+                            <div className="page-board__item">
+                                <Tasklist
+                                    tasklists={tasklists}
+                                    error={tasklistError}
+                                    boardId={state.boardId}
+                                />
+                            </div>
+                            <div className="page-board__item">
+                                <div className="page-board__add">
+                                    <AddTasklist
+                                        boardId={state.boardId}
+                                        onListAdded={handleAddTasklist}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
-}
+};
 
 export default Boards;
