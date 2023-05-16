@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Tasklist.scss";
 import AddCard from "../AddCard/AddCard";
 import Card from "../Card/Card";
-import { getCards } from "../../api";
+import { deleteCard, getCards } from "../../api";
 
 const Tasklist = (props) => {
     const [allCards, setAllCards] = useState([]);
@@ -16,6 +16,15 @@ const Tasklist = (props) => {
             setAllCards(allCards);
         } catch (err) {
             setCardError(err);
+        }
+    };
+
+    const handleDeleteCard = async (cardId) => {
+        try {
+            await deleteCard(cardId);
+            fetchCards();
+        } catch (err) {
+            setError(err);
         }
     };
 
@@ -39,6 +48,7 @@ const Tasklist = (props) => {
                                 <Card
                                     cardData={allCards}
                                     tasklistId={item.id}
+                                    onDelete={handleDeleteCard}
                                 />
                             ) : null}
                         </div>

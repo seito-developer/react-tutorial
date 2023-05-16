@@ -4,4 +4,50 @@
     padding: 5px 10px;
     margin: 10px 0;
     border-radius: 5px;
+
+    &:hover {
+        background-color: #ddd;
+        cursor: pointer;
+    }
+}
+
+.card__form {
+    text-align: right;
+    position: relative;
+    padding-bottom: 30px;
+}
+.card__form-inner {
+    text-align: right;
+}
+.card__form input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 5px;
+}
+.card__form button {
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 5px;
+    position: absolute;
+}
+.card__form button[type="submit"]{
+    background-color: rgb(180, 231, 255);
+    right: 54px;
+
+    &:hover {
+        background-color: darken(rgb(180, 231, 255), 10);
+    }
+}
+.card__form button[type="button"]{
+    background-color: #faa4a4;
+    right: -5px;
+
+    &:hover {
+        background-color: darken(#faa4a4, 10);
+    }
 }
