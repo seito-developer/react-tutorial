@@ -17,7 +17,7 @@ class BoardController extends Controller
     public function store(Request $request)
     {
         $board = new Board($request->all());
-        $board->user_id = Auth::id();
+        // $board->user_id = Auth::id();
         $board->save();
         return response()->json($board, 201);
     }

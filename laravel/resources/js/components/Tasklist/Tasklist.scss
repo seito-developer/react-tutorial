@@ -1,0 +1,20 @@
+.tasklist {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tasklist__item {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 10px;
+    min-width: 300px;
+    color: #333;
+}
+.tasklist__heading {
+    font-weight: bold;
+    font-size: 15px;
+}
+.tasklist__cards {
+    margin: 10px 0;
+}
+// .tasklist__btn {}

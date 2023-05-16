@@ -9,6 +9,7 @@ class TaskList extends Model
 {
     use HasFactory;
 
+    protected $table = 'tasklists';
     protected $fillable = ['board_id', 'title', 'position'];
 
     public function board()

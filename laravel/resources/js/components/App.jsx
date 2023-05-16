@@ -1,23 +1,18 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Board from '../pages/Board/Board';
+import Home from '../pages/home';
+
 
 const App = () => {
-    const [hoge, setHoge] = React.useState("");
-
-    useEffect(()=>{
-        const fetchFromLaravel = async () => {
-            const res  = await axios.get(`/api/hoge`);
-            setHoge(res.data.hoge)
-        };
-        fetchFromLaravel();
-    }, [])
-
     return (
-        <div className="App">
-            <h1 style={{color:"gold"}}>Hi, React App</h1>
-            { hoge }
-        </div>
-    );
+        <BrowserRouter>
+          <Routes>
+            <Route path={`/`} element={<Home />} />
+            <Route path={`/board`} element={<Board />} />
+          </Routes>
+        </BrowserRouter>
+      );
 }
 
 export default App;
