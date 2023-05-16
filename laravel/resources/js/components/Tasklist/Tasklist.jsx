@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import "./Tasklist.scss";
 import AddCard from "../AddCard/AddCard";
 import Card from "../Card/Card";
-import { deleteCard, getCards } from "../../api";
+import { deleteCard, getCards, updateCard } from "../../api";
 
 const Tasklist = (props) => {
     const [allCards, setAllCards] = useState([]);
+    const [allCardsError, setAllCardsError] = useState();
     const [cardError, setCardError] = useState();
 
     const fetchCards = async () => {
@@ -15,8 +16,13 @@ const Tasklist = (props) => {
             const allCards = await getCards();
             setAllCards(allCards);
         } catch (err) {
-            setCardError(err);
+            setAllCardsError(err);
         }
+    };
+
+    const handleCardAdded = (newCard) => {
+        setAllCards([...allCards, newCard]);
+        fetchCards();
     };
 
     const handleDeleteCard = async (cardId) => {
@@ -24,18 +30,24 @@ const Tasklist = (props) => {
             await deleteCard(cardId);
             fetchCards();
         } catch (err) {
-            setError(err);
+            setCardError(err);
+        }
+    };
+
+    const handleUpdateCard = async (cardId, title) => {
+        try {
+            await updateCard(cardId, {
+                title: title
+            });
+            fetchCards();
+        } catch (err) {
+            setCardError(err);
         }
     };
 
     useEffect(() => {
         fetchCards();
     }, []);
-
-    const handleCardAdded = (newCard) => {
-        setAllCards([...allCards, newCard]);
-        fetchCards();
-    };
 
     const renderTasklists = () => {
         if (props.tasklists) {
@@ -44,11 +56,13 @@ const Tasklist = (props) => {
                     <article className="tasklist__item" key={item.id}>
                         <h2 className="tasklist__heading">{item.title}</h2>
                         <div className="tasklist__cards">
-                            {!cardError ? (
+                            {!allCardsError ? (
                                 <Card
                                     cardData={allCards}
                                     tasklistId={item.id}
+                                    onUpdate={handleUpdateCard}
                                     onDelete={handleDeleteCard}
+                                    cardError={cardError}
                                 />
                             ) : null}
                         </div>
